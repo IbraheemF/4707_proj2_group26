@@ -1,0 +1,1 @@
+CREATE TABLE CUSTOMER ( user_id INT PRIMARY KEY, username VARCHAR(50)); 
