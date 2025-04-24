@@ -1,1 +1,7 @@
-CREATE TABLE WROTE ( user_id INT PRIMARY KEY, username VARCHAR(50)); 
+CREATE TABLE WROTE ( 
+  BookID INT, 
+  AuthorID INT,
+  PRIMARY KEY(BookID,AuthorID),
+  FOREIGN KEY(BookID) REFRENCES Book(BookID),
+  FOREIGN KEY(AuthorID) REFRENCES Author(AuthorID)
+  ); 
