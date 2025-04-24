@@ -1,1 +1,7 @@
-CREATE TABLE EMPLOYEE ( user_id INT PRIMARY KEY, username VARCHAR(50)); 
+CREATE TABLE EMPLOYEE ( 
+  EmployeeID INT PRIMARY KEY
+  FirstName VARCHAR(50), 
+  LastName VARCHAR(50),
+  Position VARCHAR(50),
+  HireDate DATE
+  ); 
