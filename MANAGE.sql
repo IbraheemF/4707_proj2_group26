@@ -1,1 +1,11 @@
-CREATE TABLE MANAGE ( user_id INT PRIMARY KEY, username VARCHAR(50)); 
+CREATE TABLE MANAGE ( 
+  EmployeeID INT UNIQUE, 
+  Rthreshold INT,
+  IQuantity INT,
+  BookID INT UNIQUE,
+  PRIMARY KEY (EmployeeID, Rthreshold, IQuantity, BookID),
+  FOREIGN KEY EmployeeID REFERENCES EMPLOYEE(EmployeeID),
+  FOREIGN KEY Rthreshold REFERENCES INVENTORY(Rthreshold),
+  FOREIGN KEY IQuantity REFERENCES INVENTORY(IQuantity),
+  FOREIGN KEY BookID REFERENCES BOOK(BookID),
+  );
