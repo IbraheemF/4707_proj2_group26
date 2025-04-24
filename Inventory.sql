@@ -1,1 +1,7 @@
-CREATE TABLE INVENTORY ( user_id INT PRIMARY KEY, username VARCHAR(50)); 
+CREATE TABLE INVENTORY ( 
+  RThreshold INT, 
+  IQuantity INT,
+  BookID INT,
+  PRIMARY KEY (BookID, RThreshold, IQuantity,
+  FOREIGN KEY (BookID) REFERENCES BOOK(BookID)
+  ); 
