@@ -1,0 +1,1 @@
+CREATE TABLE CONTAINS ( user_id INT PRIMARY KEY, username VARCHAR(50)); 
