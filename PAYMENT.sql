@@ -1,1 +1,1 @@
-CREATE TABLE PAYMENT ( user_id INT PRIMARY KEY, username VARCHAR(50)); 
+CREATE TABLE PAYMENT ( PaymentID INT PRIMARY KEY, PaymentMethod VARCHAR(50), PaymentDate   ); 
