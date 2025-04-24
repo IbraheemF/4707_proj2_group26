@@ -2,6 +2,6 @@ CREATE TABLE WROTE (
   BookID INT, 
   AuthorID INT,
   PRIMARY KEY(BookID,AuthorID),
-  FOREIGN KEY(BookID) REFRENCES Book(BookID),
-  FOREIGN KEY(AuthorID) REFRENCES Author(AuthorID)
+  FOREIGN KEY(BookID) REFERENCES Book(BookID),
+  FOREIGN KEY(AuthorID) REFERENCES Author(AuthorID)
   ); 
