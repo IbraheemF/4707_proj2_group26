@@ -1,0 +1,91 @@
+CREATE TABLE PAYMENT (
+	PaymentID INT PRIMARY KEY,
+	PaymentMethod VARCHAR(50),
+	PaymentDate DATE,
+	Amount FLOAT(4)
+);
+CREATE TABLE EMPLOYEE (
+	EmployeeID INT PRIMARY KEY,
+	FirstName VARCHAR(50),
+	LastName VARCHAR(50),
+	Position VARCHAR(50),
+	HireDate DATE
+);
+CREATE TABLE AUTHOR (
+	AuthorID INT PRIMARY KEY,
+	FName VARCHAR(50),
+	LName VARCHAR(50)
+);
+CREATE TABLE CUSTOMER (
+	CustomerID INT PRIMARY KEY,
+	FName VARCHAR(50),
+	LName VARCHAR(50),
+	Email VARCHAR(50),
+	PNumber INT,
+	Street VARCHAR(50),
+	Zip INT,
+	City VARCHAR(50),
+	StateName VARCHAR(50)
+);
+CREATE TABLE BOOK (
+	BookID INT PRIMARY KEY,
+	Title VARCHAR(50),
+	Genre VARCHAR(50),
+	Price FLOAT(4),
+	Stock INT,
+	PublisherName VARCHAR(50),
+	PublisherContactInfo VARCHAR(50)
+);
+CREATE TABLE ASSIST (
+	EmployeeID INT,
+	CustomerID INT,
+	PRIMARY KEY (EmployeeID, CustomerID),
+	FOREIGN KEY (EmployeeID) REFERENCES EMPLOYEE(EmployeeID),
+	FOREIGN KEY (CustomerID) REFERENCES CUSTOMER(CustomerID)
+);
+CREATE TABLE INVENTORY (
+	RThreshold INT,
+	IQuantity INT,
+	BookID INT,
+	PRIMARY KEY (BookID, RThreshold, IQuantity),
+	FOREIGN KEY (BookID) REFERENCES BOOK(BookID),
+	INDEX (RThreshold, IQuantity, BookID)
+);
+CREATE TABLE ORDERS (
+	OrderID INT PRIMARY KEY,
+	PaymentStatus VARCHAR(50),
+	PaymentRecord VARCHAR(50),
+	PaymentID INT,
+	ShippingDate DATE,
+	OrderDate DATE,
+	ShippingAddress VARCHAR(50),
+	EmployeeID INT,
+	FOREIGN KEY (EmployeeID) REFERENCES EMPLOYEE(EmployeeID),
+	FOREIGN KEY (PaymentID) REFERENCES PAYMENT(PaymentID)
+);
+CREATE TABLE MANAGE (
+	EmployeeID INT,
+	Rthreshold INT,
+	IQuantity INT,
+	BookID INT,
+	PRIMARY KEY (EmployeeID, RThreshold, IQuantity, BookID),
+	FOREIGN KEY (EmployeeID) REFERENCES EMPLOYEE(EmployeeID),
+	FOREIGN KEY (BookID) REFERENCES BOOK(BookID),
+	FOREIGN KEY (RThreshold, IQuantity, BookID) REFERENCES INVENTORY(RThreshold, IQuantity, BookID)
+);
+CREATE TABLE CONTAIN (
+	BookID INT,
+	OrderID INT,
+	Quantity INT,
+	Cost FLOAT(4),
+	PRIMARY KEY (BookID, OrderID),
+	FOREIGN KEY (BookID) REFERENCES BOOK(BookID),
+	FOREIGN KEY (OrderID) REFERENCES ORDERS(OrderID)
+);
+CREATE TABLE WROTE (
+	BookID INT,
+	AuthorID INT,
+	PRIMARY KEY(BookID, AuthorID),
+	FOREIGN KEY(BookID) REFERENCES BOOK(BookID),
+	FOREIGN KEY(AuthorID) REFERENCES AUTHOR(AuthorID)
+);
